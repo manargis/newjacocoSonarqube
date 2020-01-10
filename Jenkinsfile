@@ -8,13 +8,7 @@ pipeline {
         sh "mvn clean package"
       }
     }
-    stage('Code Analysis') {
-      steps {
-        script {
-          sh "mvn sonar:sonar -Dsonar.host.url=https://sonarqube-sonarqube-jacoco.osp-apps.k4it.xyz -Dsonar.login=9c3d6605fe29b8ea4c20532ca34cd27bb9581220"
-         }
-      }
-    }    
+    
     stage('Create Image Builder') {
       when {
         expression {
