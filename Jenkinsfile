@@ -8,6 +8,13 @@ pipeline {
         sh "mvn clean package"
       }
     }
+    stage('Code Analysis') {
+      steps {
+        script {
+          sh "mvn sonar:sonar -Dsonar.host.url=https://sonarqube-myproject-manargis.osp-apps.k4it.xyz"
+         }
+      }
+    }
     
     stage('Create Image Builder') {
       when {
